@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import time
-
+from datatime import date 
 
 class PomodoroUyg:
     def __init__(self,master):
@@ -37,7 +37,8 @@ class PomodoroUyg:
         self.calisiyor=False
         self.baslatButonu.config(state=tk.NORMAL)
         self.durdurButonu.config(state=tk.DISABLED)
-
+    
+    #sayacı calıstırma
     def sayac(self):
         if self.calisiyor:
             if self.kalanZaman > 0:
@@ -51,24 +52,21 @@ class PomodoroUyg:
                 self.zamanıDurdur()
                 self.kalanZaman= self.calismaZamani
                 self.label.config(text="25:00")
-                
+    
+    def oturumuKaydet(self):
+        today= date.today().strftime("%A")
+        try:
+            self.oturum[today]=self.oturum.get(today, 0)+ 25/60
+        except Exception as e:
+            print(f" Hata oluştu: {e}")
 
-
-
-
-
-
-
-
-
-
+    def raporuGoster(self):
+        rapor= "Haftalık Çalışma Raporu: \n"
+        for day, hours in self.oturum.items():
+            rapor+= f"{day} : {hours} saat\n"
+        messagebox.showinfo("Haftalık Raporunuz", rapor)
 
     def main():
         root=tk.Tk()
         uyg=PomodoroUyg(root)
-        root.mainloop
-    if __name__== "__main__":
-        main()
-
-        
-        
+        root.mainloop()
