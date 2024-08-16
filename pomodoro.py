@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
 from datetime import date
-
 class PomodoroApp:
     def __init__(self,master):
         self.master=master
@@ -14,7 +13,7 @@ class PomodoroApp:
         self.oturum={}
 
         #grafik arayüz kısmı
-        self.label=tk.Label(master, text="25.00", font=("Times New Roman",48 ), foreground="purple", background="pink")
+        self.label=tk.Label(master, text="25.00", font=("Arial",48 ), foreground="purple", background="pink")
         self.label.pack(pady=20)
         
         self.baslatButonu= tk.Button(master, text="Pomodoroyu Başlat", foreground="purple", command=self.zamaniBaslat)
@@ -67,9 +66,9 @@ class PomodoroApp:
         messagebox.showinfo("Haftalık Raporunuz", rapor)
 
 def main():
-        root=tk.Tk()
-        app=PomodoroApp(root)
-        root.mainloop()
+    root=tk.Tk()
+    app= PomodoroApp(root)
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
