@@ -49,7 +49,7 @@ class PomodoroApp:
             else:
                 self.oturumuKaydet()
                 messagebox.showinfo("Pomodoro başarıyla tamamlandı, çalışma süresi bitti.")
-                self.zamanıDurdur()
+                self.zamaniDurdur()
                 self.kalanZaman= self.calismaZamani
                 self.label.config(text="25:00")
     
