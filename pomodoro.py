@@ -33,6 +33,42 @@ class PomodoroUyg:
         self.durdurButonu.config(state=tk.NORMAL)
         self.sayac()
     
-    
+    def zamanıDurdur(self):
+        self.calisiyor=False
+        self.baslatButonu.config(state=tk.NORMAL)
+        self.durdurButonu.config(state=tk.DISABLED)
+
+    def sayac(self):
+        if self.calisiyor:
+            if self.kalanZaman > 0:
+                dakika, saniye= divmod(self.kalanZaman, 60)
+                zaman=f"{dakika:02d}:{saniye:02s}"
+                self.label.config(text=zaman)
+                self.master.after(1000, self.sayac)
+            else:
+                self.oturumuKaydet()
+                messagebox.showinfo("Pomodoro başarıyla tamamlandı, çalışma süresi bitti.")
+                self.zamanıDurdur()
+                self.kalanZaman= self.calismaZamani
+                self.label.config(text="25:00")
+                
+
+
+
+
+
+
+
+
+
+
+
+    def main():
+        root=tk.Tk()
+        uyg=PomodoroUyg(root)
+        root.mainloop
+    if __name__== "__main__":
+        main()
+
         
         
