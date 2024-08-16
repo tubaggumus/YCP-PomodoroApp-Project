@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
-import time
 from datetime import date
 
-class PomodoroUyg:
+class PomodoroApp:
     def __init__(self,master):
         self.master=master
         self.master.title("Pomodoro Uygulaması")
@@ -18,22 +17,22 @@ class PomodoroUyg:
         self.label=tk.Label(master, text="25.00", font=("Times New Roman",48 ), foreground="purple", background="pink")
         self.label.pack(pady=20)
         
-        self.baslatButonu= tk.Button(master, text="Pomodoroyu Başlat", foreground="purple", command=self.zamanıBaslat)
+        self.baslatButonu= tk.Button(master, text="Pomodoroyu Başlat", foreground="purple", command=self.zamaniBaslat)
         self.baslatButonu.pack(pady=10)
 
-        self.durdurButonu=tk.Button(master, text="Durdur", foreground="purple", command=self.zamanıDurdur)
+        self.durdurButonu=tk.Button(master, text="Durdur", foreground="purple", command=self.zamaniDurdur)
         self.durdurButonu.pack(pady=10)
 
         self.raporButonu= tk.Button(master, text="Geçmiş Raporu", command=self.raporuGoster)
         self.raporButonu.pack(pady=10)
     
-    def zamanıBaslat(self):
+    def zamaniBaslat(self):
         self.calisiyor=True
         self.baslatButonu.config(state=tk.DISABLED)
         self.durdurButonu.config(state=tk.NORMAL)
         self.sayac()
     
-    def zamanıDurdur(self):
+    def zamaniDurdur(self):
         self.calisiyor=False
         self.baslatButonu.config(state=tk.NORMAL)
         self.durdurButonu.config(state=tk.DISABLED)
@@ -69,7 +68,7 @@ class PomodoroUyg:
 
 def main():
         root=tk.Tk()
-        app=PomodoroUyg(root)
+        app=PomodoroApp(root)
         root.mainloop()
 
 if __name__ == "__main__":
