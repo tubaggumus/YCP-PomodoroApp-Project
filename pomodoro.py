@@ -1,14 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox
 import time
-from datatime import date 
+from datetime import date
 
 class PomodoroUyg:
     def __init__(self,master):
         self.master=master
         self.master.title("Pomodoro Uygulaması")
 
-        self.calismaZamani=26*60
+        self.calismaZamani=25*60
         self.molaZamani=5*60
         self.calisiyor= False
         self.kalanZaman= self.calismaZamani
@@ -43,8 +43,9 @@ class PomodoroUyg:
         if self.calisiyor:
             if self.kalanZaman > 0:
                 dakika, saniye= divmod(self.kalanZaman, 60)
-                zaman=f"{dakika:02d}:{saniye:02s}"
+                zaman=f"{dakika:02d}:{saniye:02d}"
                 self.label.config(text=zaman)
+                self.kalanZaman-=1
                 self.master.after(1000, self.sayac)
             else:
                 self.oturumuKaydet()
@@ -66,7 +67,10 @@ class PomodoroUyg:
             rapor+= f"{day} : {hours} saat\n"
         messagebox.showinfo("Haftalık Raporunuz", rapor)
 
-    def main():
+def main():
         root=tk.Tk()
-        uyg=PomodoroUyg(root)
+        app=PomodoroUyg(root)
         root.mainloop()
+
+if __name__ == "__main__":
+    main()
